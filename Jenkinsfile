@@ -8,7 +8,9 @@ pipeline {
         }
         stage ('check acces to aws') {
            steps { 
-             sh "aws iam list-users"
+             withAWS(credentials:'aws-credentials') {
+            sh "aws iam list-users"  
+            } 
            }
         } 
         stage ('check if terraform is installed') {
