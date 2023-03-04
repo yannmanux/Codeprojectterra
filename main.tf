@@ -77,7 +77,6 @@ resource "aws_security_group" "Project_sg" {
 resource "aws_instance" "Project_instance" {
   ami = "ami-087c17d1fe0178315"
   instance_type = "t2.micro"
-  user_data = file("user_data.sh")
   key_name = "classkey"
   vpc_security_group_ids = [aws_security_group.Project_sg.id]
   subnet_id = aws_subnet.Project_subnet.id
@@ -91,7 +90,6 @@ resource "aws_instance" "Project_instance" {
 resource "aws_instance" "Project_instance2" {
   ami = "ami-087c17d1fe0178315"
   instance_type = "t2.micro"
-  user_data = file("user_data.sh")
   key_name = "classkey"
   vpc_security_group_ids = [aws_security_group.Project_sg.id]
   subnet_id = aws_subnet.Project_subnet2.id
