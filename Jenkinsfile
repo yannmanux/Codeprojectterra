@@ -15,16 +15,19 @@ pipeline {
         } 
         stage ('check if terraform is installed') {
           steps{
+            withAWS(credentials:'aws-credentials')
             sh "terraform --version"
             }  
         }
         stage ('run terraform init') {
             steps {
+                withAWS(credentials:'aws-credentials')
                 sh "terraform init"
             }
         }
          stage ('run terraform plan') {
         steps {
+            withAWS(credentials:'aws-credentials')
             sh "terraform plan"
             }
         }
